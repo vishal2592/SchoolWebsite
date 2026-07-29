@@ -86,7 +86,7 @@ const Navbar = () => {
               Login
             </Link>
 
-            {/* Mobile menu button - hidden on desktop */}
+            {/* Mobile menu button - Always shows three lines, never transforms */}
             <button
               onClick={toggleMenu}
               type="button"
@@ -95,23 +95,20 @@ const Navbar = () => {
               aria-expanded={isOpen}
             >
               <span className="sr-only">Open main menu</span>
-              <div className="relative w-5 h-5 sm:w-6 sm:h-6">
-                <span
-                  className={`absolute block w-5 h-0.5 sm:w-6 bg-current transform transition duration-300 ease-in-out ${
-                    isOpen ? 'rotate-45 translate-y-1.5' : '-translate-y-2'
-                  }`}
+              {/* Three lines icon - always visible, never changes */}
+              <svg
+                className="w-7 h-7 sm:w-6 sm:h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
                 />
-                <span
-                  className={`absolute block w-5 h-0.5 sm:w-6 bg-current transform transition duration-300 ease-in-out ${
-                    isOpen ? 'opacity-0' : 'opacity-100'
-                  }`}
-                />
-                <span
-                  className={`absolute block w-5 h-0.5 sm:w-6 bg-current transform transition duration-300 ease-in-out ${
-                    isOpen ? '-rotate-45 -translate-y-1.5' : 'translate-y-2'
-                  }`}
-                />
-              </div>
+              </svg>
             </button>
           </div>
         </div>
@@ -148,6 +145,7 @@ const Navbar = () => {
               </div>
               <span className="text-white font-bold text-lg">SchoolName</span>
             </div>
+            {/* Close button - only visible inside the sidebar */}
             <button
               onClick={closeMenu}
               className="text-white hover:bg-white/20 rounded-lg p-1 transition-colors duration-200"
